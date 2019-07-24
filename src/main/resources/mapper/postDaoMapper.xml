@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppp.dao.IPostDao">
+    <insert id="add" parameterType="Post">
+    INSERT INTO
+     `post` (
+            `userid`,
+            `content`,
+            `photo`,
+            `createtime`
+     )
+     VALUES
+        (#{userid},
+        #{content},
+        #{photo},
+        #{createtime});
+     </insert>
+
+    <delete id="del" parameterType="Post">
+        DELETE
+        FROM
+            post
+        WHERE
+            postid = #{postid};
+    </delete>
+</mapper>
+<!--<insert id="add" parameterType="EStudent">
+  insert into TStudent(name, age) values(#{name}, #{age})
+</insert-->

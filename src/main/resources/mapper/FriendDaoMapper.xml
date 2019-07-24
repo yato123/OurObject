@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppp.dao.IFriendDao">
+    <insert id="addFriend" parameterType="com.ppp.entity.Friend">
+    INSERT INTO `friend` (
+        `userid`,
+        `friend`,
+        `confirm`,
+        `createtime`
+    )
+    VALUES
+        (#{userid}, #{friend}, #{confirm}, #{createtime});
+    </insert>
+
+    <select id="getUserAndFriend" resultType="com.ppp.entity.UserAndFriend">
+        SELECT
+            u.* ,
+            f.*
+        FROM
+            users u
+        LEFT JOIN friend f ON u.userid = f.friend WHERE confirm = 1 and f.userid =#{userid};
+    </select>
+
+</mapper>
